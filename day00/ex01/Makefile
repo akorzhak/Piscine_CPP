@@ -1,10 +1,14 @@
-NAME = megaphone
+NAME = phone_book
 
 C = clang++
 
 CFLAG = -Wall -Wextra -Werror
 
-SRC = megaphone.cpp
+INC = -I ./includes
+
+SRC_DIR = src/
+
+SRC = contact.cpp main.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -21,14 +25,14 @@ RESET = \033[0m
 
 .PHONY: all clean fclean
 
+%.o: $(SRC_DIR)%.cpp
+	$(C) $(CFLAG) -o $@ -c $< $(INC)
+
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	@$(C) $(CFLAG) $(OBJ) -o $(NAME)
 	@echo "$(GREEN)$(NAME) compilation is done$(RESET)"
-
-%.o: %.cpp
-	$(C) $(CFLAG) -o $@ -c $<
 
 clean:
 	@rm -f $(OBJ)
