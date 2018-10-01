@@ -100,12 +100,12 @@ std::string	Contact::getSecret(void)
 	return this->secret;
 }
 
-void		Contact::setBirthday(int birthday)
+void		Contact::setBirthday(std::string birthday)
 {
 	this->birthday = birthday;
 }
 
-int			Contact::getBirthday(void)
+std::string	Contact::getBirthday(void)
 {
 	return this->birthday;
 }
