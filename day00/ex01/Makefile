@@ -8,7 +8,7 @@ INC = -I ./includes
 
 SRC_DIR = src/
 
-SRC = contact.cpp main.cpp
+SRC = contact.cpp main.cpp book.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

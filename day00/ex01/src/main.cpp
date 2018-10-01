@@ -1,8 +1,7 @@
 #include "phone_book.hpp"
 
-int		main(void)
+Contact recordContact(void)
 {
-	record
 	std::string	firstName,
 				lastName,
 				nickname,
@@ -16,7 +15,7 @@ int		main(void)
 				birthday;
 
 	Contact contact;
-	
+
 	std::cout << "Let's add a new contact\n";
 
 	std::cout << "Enter the First Name: ";
@@ -63,7 +62,42 @@ int		main(void)
 	std::getline(std::cin, secret);
 	contact.setSecret(secret);
 
-	std::cout << "First Name: " << contact.getFirstName() << std::endl;
-	std::cout << "Last Name: " << contact.getLastName() << std::endl;
+	return contact;
+//	std::cout << "First Name: " << contact.getFirstName() << std::endl;
+//	std::cout << "Last Name: " << contact.getLastName() << std::endl;
+}
+
+int		main(void)
+{
+	std::string	command;				
+	Book 		book;
+	
+	std::cout << "Hi!\n";
+	while (1)
+	{
+		std::cout << "Enter one of the folowing commands: ADD | SEARCH | EXIT\n";
+
+		std::getline(std::cin, command);
+
+		if (command == "ADD")
+		{
+			if (book.isFull())
+				std::cout << "Sorry, the Phone Book is full.\n";
+			else
+				book.addContact(recordContact());
+		}
+		else if (command == "SEARCH")
+			book.displayContacts();
+		else if (command == "EXIT")
+		{
+			std::cout << "Bye!\n";
+			return 0;
+		}
+		else
+		{
+			std::cout << "usage: ./phone_book [ ADD | SEARCH | EXIT ]\n";
+			return 1;
+		}
+	}
 	return 0;
 }

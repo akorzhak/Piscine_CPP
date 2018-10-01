@@ -4,6 +4,8 @@
 # include <iostream>
 # include <string>
 # include <cstring>
+# include <iomanip>
+# include <cstdio>
 
 class Contact
 {
@@ -55,15 +57,10 @@ class Book
 
 	public:
 
-		void		initBook(void);
+		bool		isFull(void);
 		bool		addContact(Contact contact);
 		void		displayContacts(void);
 		void		searchContact(Contact contact);
-};
-
-struct 
-{
-	
 };
 
 #endif
