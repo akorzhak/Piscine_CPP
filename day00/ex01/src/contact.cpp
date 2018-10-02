@@ -1,4 +1,4 @@
-#include "phone_book.hpp"
+#include "phonebook.hpp"
 
 void		Contact::setFirstName(std::string firstName)
 {
@@ -108,4 +108,12 @@ void		Contact::setBirthday(std::string birthday)
 std::string	Contact::getBirthday(void)
 {
 	return this->birthday;
+}
+
+bool		Contact::isEmptyContact(void)
+{
+	if ((this->getFirstName() != "" || this->getLastName() != ""
+		|| this->getNickname() != "") && (this->getPhone() != ""))
+		return false;
+	return true;
 }

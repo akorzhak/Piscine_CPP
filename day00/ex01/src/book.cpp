@@ -1,11 +1,19 @@
-#include "phone_book.hpp"
+#include "phonebook.hpp"
+
+void		Book::init(void)
+{
+	int i;
+
+	for (i = 0; i < 8; i++) 
+    	contacts[i].empty = true; 
+}
 
 bool		Book::isFull(void)
 {
 	int i;
 
 	i = 0;
-	while (contacts[i].firstName != 0)
+	while (!contacts[i].empty)
 	{
 		i++;
 		if (i >= 8)
@@ -19,13 +27,14 @@ bool		Book::addContact(Contact contact)
 	int i;
 
 	i = 0;
-	while (contacts[i])
+	while (!contacts[i].empty)
 	{
 		i++;
 		if (i >= 8)
 			return false;
 	}
 	contacts[i] = contact;
+	contacts[i].empty = false;
 	return true;
 }
 
@@ -37,6 +46,7 @@ void		truncateData(std::string str)
 	if (str.size() > 10)
 	{
 		str.copy(buff, 10, 0);
+		buff[9] = '.';
 		buff[10] = '\0';
 		std::cout << buff;
 	}
@@ -48,27 +58,41 @@ void		overviewContact(Contact contact, int i)
 {
 	std::cout << std::setfill(' ') << std::setw(10);
 	std::cout << (i + 1) << "|";
-	truncateData(contact->firstName);
+	truncateData(contact.getFirstName());
 	putchar('|');
-	truncateData(contact->lastName);
+	truncateData(contact.getLastName());
 	putchar('|');
-	truncateData(contact->nickname);
+	truncateData(contact.getNickname());
+	putchar('\n');
 }
 
-void		Book::displayContacts(void)
+bool		Book::displayAvailableContacts(void)
 {
 	int i;
 
 	i = 0;
-	if (!contacts[i])
+	if (contacts[0].empty)
 	{
-		std::cout << "Phone Book is empty!\n";
-		return ;
+		displayWarningMessage(EMPTY_BOOK);
+		return false;
 	}
-	std::cout << "     Index|First Name| Last Name| Nick Name" << std::endl;
-	while (i < 8 && contacts[i])
+	std::cout << BLUE << "     Index" << RESET << "|"
+		<< GREEN << "First Name" << RESET << "|"
+		<< YELLOW << " Last Name" << RESET << "|"
+		<< PURPLE << " Nick Name" << RESET << std::endl;
+	while ((i < 8) && (!contacts[i].empty))
 	{
-		i++;
 		overviewContact(contacts[i], i);
+		i++;
 	}
+	return true;
+}
+
+void		Book::searchContact(int index)
+{
+	if ((index <= 0 || index > 8) || contacts[index - 1].empty)
+	{
+		displayWarningMessage(INVALID_INDEX);
+	}
+	displayMessageEndl("First Name: " + contacts[index - 1].getFirstName());	
 }

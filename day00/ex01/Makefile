@@ -1,4 +1,4 @@
-NAME = phone_book
+NAME = phonebook
 
 C = clang++
 
@@ -8,7 +8,7 @@ INC = -I ./includes
 
 SRC_DIR = src/
 
-SRC = contact.cpp main.cpp book.cpp
+SRC = contact.cpp main.cpp book.cpp messages.cpp
 
 OBJ = $(SRC:.cpp=.o)
 

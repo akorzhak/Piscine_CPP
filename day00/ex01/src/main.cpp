@@ -1,4 +1,4 @@
-#include "phone_book.hpp"
+#include "phonebook.hpp"
 
 Contact recordContact(void)
 {
@@ -16,88 +16,99 @@ Contact recordContact(void)
 
 	Contact contact;
 
-	std::cout << "Let's add a new contact\n";
+	displayGreenMessage(ADD_NEW);
 
-	std::cout << "Enter the First Name: ";
+	displayMessage(F_NAME);
 	std::getline(std::cin, firstName);
 	contact.setFirstName(firstName);
 
-	std::cout << "Enter the Last Name: ";
+	displayMessage(L_NAME);
 	std::getline(std::cin, lastName);
 	contact.setLastName(lastName);
 
-	std::cout << "Enter Nickname: ";
+	displayMessage(NICK);
 	std::getline(std::cin, nickname);
 	contact.setNickname(nickname);
 
-	std::cout << "Enter Login: ";
+	displayMessage(LOGIN);
 	std::getline(std::cin, login);
 	contact.setLogin(login);
 
-	std::cout << "Enter Postal Address: ";
+	displayMessage(POST);
 	std::getline(std::cin, post);
 	contact.setPost(post);
 
-	std::cout << "Enter Email Address: ";
+	displayMessage(EMAIL);
 	std::getline(std::cin, email);
 	contact.setEmail(email);
 
-	std::cout << "Enter Phone Number: ";
+	displayMessage(PHONE);
 	std::getline(std::cin, phone);
 	contact.setPhone(phone);
 
-	std::cout << "Enter Birthday Date: ";
+	displayMessage(BIRTHDAY);
 	std::getline(std::cin, birthday);
 	contact.setBirthday(birthday);
 
-	std::cout << "Enter Favorite Meal: ";
+	displayMessage(MEAL);
 	std::getline(std::cin, meal);
 	contact.setMeal(meal);
 
-	std::cout << "Enter Underwear Color: ";
+	displayMessage(COLOR);
 	std::getline(std::cin, color);
 	contact.setColor(color);
 
-	std::cout << "Enter the Darkest Secret: ";
+	displayMessage(SECRET);
 	std::getline(std::cin, secret);
 	contact.setSecret(secret);
 
 	return contact;
-//	std::cout << "First Name: " << contact.getFirstName() << std::endl;
-//	std::cout << "Last Name: " << contact.getLastName() << std::endl;
 }
 
 int		main(void)
 {
-	std::string	command;				
+	int 		index;
+	std::string	command;
+	Contact 	contact;			
 	Book 		book;
 	
-	std::cout << "Hi!\n";
+	displayGreenMessage("Hi!\n");
+	book.init();
 	while (1)
 	{
-		std::cout << "Enter one of the folowing commands: ADD | SEARCH | EXIT\n";
-
+		displayCommandMessage();
 		std::getline(std::cin, command);
-
 		if (command == "ADD")
 		{
 			if (book.isFull())
-				std::cout << "Sorry, the Phone Book is full.\n";
+				displayWarningMessage(FULL_BOOK);
 			else
-				book.addContact(recordContact());
+			{
+				contact = recordContact();
+				if (!contact.isEmptyContact())
+					book.addContact(contact);
+				else
+				{
+					displayWarningMessage(WARNING);
+					displayMessage(NOT_RECORDED_CONTACT);
+				}
+			}
 		}
 		else if (command == "SEARCH")
-			book.displayContacts();
+		{
+			if (!book.displayAvailableContacts())
+				continue ;
+			displayYellowMessage(ENTER_INDEX);
+			std::cin >> index;
+			book.searchContact(index);
+		}
 		else if (command == "EXIT")
 		{
-			std::cout << "Bye!\n";
+			displayYellowMessage("Bye!\n");
 			return 0;
 		}
 		else
-		{
-			std::cout << "usage: ./phone_book [ ADD | SEARCH | EXIT ]\n";
-			return 1;
-		}
+			displayMessageEndl(USAGE);
 	}
 	return 0;
 }
