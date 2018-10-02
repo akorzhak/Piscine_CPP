@@ -78,6 +78,8 @@ int		main(void)
 	{
 		displayCommandMessage();
 		std::getline(std::cin, command);
+		if (std::cin.eof()==1) 
+			break ;
 		if (command == "ADD")
 		{
 			if (book.isFull())
