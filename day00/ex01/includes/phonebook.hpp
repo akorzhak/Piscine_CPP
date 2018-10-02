@@ -105,7 +105,7 @@ class Book
 {
 	private:
 
-		Contact 	contacts[8];
+		Contact		contacts[8];
 
 	public:
 
