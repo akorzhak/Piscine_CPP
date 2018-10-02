@@ -32,8 +32,6 @@
 # define INVALID_INDEX "There is NO any record under indicated index!\n"				
 # define USAGE "usage: ./phonebook [ ADD | SEARCH | EXIT ]"
 
-
-
 /*
 ****************************** COLOR CONSTANTS ********************************
 */
