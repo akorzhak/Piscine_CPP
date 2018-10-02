@@ -28,7 +28,7 @@ $(NAME): $(OBJ)
 	@echo "$(GREEN)$(NAME) compilation is done$(RESET)"
 
 %.o: %.cpp
-	$(C) $(CFLAG) -o $@ -c $<
+	@$(C) $(CFLAG) -o $@ -c $<
 
 clean:
 	@rm -f $(OBJ)

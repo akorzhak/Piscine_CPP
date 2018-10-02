@@ -26,7 +26,7 @@ RESET = \033[0m
 .PHONY: all clean fclean
 
 %.o: $(SRC_DIR)%.cpp
-	$(C) $(CFLAG) -o $@ -c $< $(INC)
+	@$(C) $(CFLAG) -o $@ -c $< $(INC)
 
 all: $(NAME)
 

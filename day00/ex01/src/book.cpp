@@ -5,7 +5,7 @@ void		Book::init(void)
 	int i;
 
 	for (i = 0; i < 8; i++) 
-    	contacts[i].empty = true; 
+		contacts[i].empty = true; 
 }
 
 bool		Book::isFull(void)
@@ -93,6 +93,17 @@ void		Book::searchContact(int index)
 	if ((index <= 0 || index > 8) || contacts[index - 1].empty)
 	{
 		displayWarningMessage(INVALID_INDEX);
+		return ;
 	}
-	displayMessageEndl("First Name: " + contacts[index - 1].getFirstName());	
+	displayMessageEndl("First Name: " + contacts[index - 1].getFirstName());
+	displayMessageEndl("Last Name: " + contacts[index - 1].getLastName());
+	displayMessageEndl("Nickname: " + contacts[index - 1].getNickname());
+	displayMessageEndl("Login: " + contacts[index - 1].getLogin());
+	displayMessageEndl("Postal Address: " + contacts[index - 1].getPost());
+	displayMessageEndl("Email Address: " + contacts[index - 1].getEmail());
+	displayMessageEndl("Phone Number: " + contacts[index - 1].getPhone());
+	displayMessageEndl("Birthday Date: " + contacts[index - 1].getBirthday());
+	displayMessageEndl("Favorite Meal: " + contacts[index - 1].getMeal());
+	displayMessageEndl("Underwear Color: " + contacts[index - 1].getColor());
+	displayMessageEndl("Darkest Secret: " + contacts[index - 1].getSecret());
 }

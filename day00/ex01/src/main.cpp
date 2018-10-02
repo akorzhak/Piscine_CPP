@@ -67,10 +67,10 @@ Contact recordContact(void)
 
 int		main(void)
 {
-	int 		index;
-	std::string	command;
-	Contact 	contact;			
-	Book 		book;
+	int			index;
+	std::string	command, dummy;
+	Contact		contact;			
+	Book		book;
 	
 	displayGreenMessage("Hi!\n");
 	book.init();
@@ -100,6 +100,7 @@ int		main(void)
 				continue ;
 			displayYellowMessage(ENTER_INDEX);
 			std::cin >> index;
+			std::getline(std::cin, dummy);
 			book.searchContact(index);
 		}
 		else if (command == "EXIT")
