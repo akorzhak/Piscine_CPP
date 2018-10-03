@@ -21,7 +21,10 @@ class Brain
 		Brain(void);
 		~Brain(void);
 
-		std::string	identify(void);
+		void				setType(std::string);
+
+		std::string			identify(void);
+		std::string	const	&getType(void);
 };
 
 #endif
