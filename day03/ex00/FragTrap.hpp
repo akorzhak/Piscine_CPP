@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <string>
+# include <cstdlib>
 
 /*
 ****************************** FRAGTRAP CLASS **********************************
@@ -12,14 +13,14 @@ class FragTrap
 {
 	private:
 
-		unsigned int	_hitPoints;
-		unsigned int	_maxHitPoints;
-		unsigned int	_energyPoints;
-		unsigned int	_maxEnergyPoints;
-		unsigned int	_level;
-		unsigned int	_meleeAttackDamage;
-		unsigned int	_rangedAttackDamage;
-		unsigned int	_armorDamageReduction;
+		int	_hitPoints;
+		int	_maxHitPoints;
+		int	_energyPoints;
+		int	_maxEnergyPoints;
+		int	_level;
+		int	_meleeAttackDamage;
+		int	_rangedAttackDamage;
+		int	_armorDamageReduction;
 
 		std::string		_name;
 
@@ -38,14 +39,16 @@ class FragTrap
 		void			beRepaired(unsigned int amount);
 
 		std::string		getName(void);
-		unsigned int	getHitPoints(void);
-		unsigned int	getMaxHitPoints(void);
-		unsigned int	getEnergyPoints(void);
-		unsigned int	getMaxEnergyPoints(void);
-		unsigned int	getLevel(void);
-		unsigned int	getMeleeAttackDamage(void);
-		unsigned int	getRangedAttackDamage(void);
-		unsigned int	getArmorDamageReduction(void);
+		int				getHitPoints(void);
+		int				getMaxHitPoints(void);
+		int				getEnergyPoints(void);
+		int				getMaxEnergyPoints(void);
+		int				getLevel(void);
+		int				getMeleeAttackDamage(void);
+		int				getRangedAttackDamage(void);
+		int				getArmorDamageReduction(void);
+
+		void			vaulthunter_dot_exe(std::string const & target);
 };
 
 #endif
