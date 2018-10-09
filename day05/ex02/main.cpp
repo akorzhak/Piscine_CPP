@@ -1,6 +1,8 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 int		main(void)
 {
@@ -25,6 +27,31 @@ int		main(void)
 
 	bill.executeForm(shrubberyForm);
 	steve.executeForm(shrubberyForm);
+
+	//-------------------------------
+	std::cout << std::endl;
+
+	//create RobotomyRequestForm
+	RobotomyRequestForm robotomyForm("robot");
+
+	std::cout << robotomyForm;
+
+	////bureacrat try to sign form
+	bill.signForm(robotomyForm);
+	steve.signForm(robotomyForm);
+
+	bill.executeForm(robotomyForm);
+	steve.executeForm(robotomyForm);
+
+	//-------------------------------
+	std::cout << std::endl;
+	
+	//create PresidentialPardonForm
+	PresidentialPardonForm pardonForm("Bill");
+
+	std::cout << pardonForm;
+	steve.signForm(pardonForm);
+	steve.executeForm(pardonForm);
 
 	return 0;
 }
