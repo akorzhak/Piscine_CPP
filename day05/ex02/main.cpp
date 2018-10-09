@@ -11,7 +11,7 @@ int		main(void)
 	Bureaucrat steve("Steve", 1);
 
 	//create ShrubberyCreationForm
-	ShrubberyCreationForm shrubberyForm("garden");
+	ShrubberyCreationForm shrubberyForm("home");
 
 	std::cout << bill;
 	std::cout << steve;
